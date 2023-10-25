@@ -1,0 +1,21 @@
+.rsk-container{
+    top: 8.7rem;
+    width: 100%;
+    height: 52.4rem;
+    background: #fff;
+}
+.rsk-sidenav-content{
+    display: flex;
+    height: inherit;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.rsk-sidenav{
+    width: 27rem;
+    padding: 20px;
+    background: var(--orange);
+}
+.pageContent{
+    margin-top: 2rem;
+    font-size: 16px;
+}
