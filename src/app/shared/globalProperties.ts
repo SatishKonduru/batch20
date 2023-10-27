@@ -15,7 +15,7 @@ public static error: string = 'error'
 
 // Symbols Meaning.....
 // . => Any Single CharacterData
-// + => Zero/more Occurances
+// * => Zero/more Occurances
 // + => One/more Occurances
 // ? => Zero/One Occurance
 // ^ => Begining of the line
