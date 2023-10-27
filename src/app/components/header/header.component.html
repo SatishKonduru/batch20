@@ -14,10 +14,15 @@
         <div class="fa fa-bars" id="menu-btn"></div>
         <div class="fa fa-search" id="search-btn"></div>
         <div class="fa fa-shopping-cart" id="cart-btn"></div>
-        <div class="fa fa-user" id="login-btn"></div>
+        <div class="fa fa-user" id="login-btn" [matMenuTriggerFor]="menu"></div>
     </div>
     <form action="" class="search-form">
         <input type="search" id="search-box" placeholder="Search here...."> 
         <label for="search-box" class="fa fa-search"></label>
     </form>
 </header>
+<mat-menu #menu="matMenu">
+    <button class="menu-item" mat-menu-item> <mat-icon>account_circle</mat-icon><span class="size" (click)="userSignup()">Register</span></button>
+    <button class="menu-item" mat-menu-item> <mat-icon>exit_to_app</mat-icon><span class="size">Login</span></button>
+    <button class="menu-item" mat-menu-item> <mat-icon>power_settings_new</mat-icon><span class="size">Exit</span></button>
+</mat-menu>

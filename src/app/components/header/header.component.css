@@ -85,6 +85,13 @@
 .header .search-form label:hover{
     color: var(--orange)
 }
+.size:hover{
+    font-size: 20px !important;
+}
+
+.menu-item:hover, mat-icon:hover{
+    color: var(--orange) !important;
+}
 
 @media screen and (min-device-width : 100px) and (max-device-width: 914px){
     .navbar{
