@@ -1,1 +1,16 @@
-<p>signup works!</p>
+<mat-toolbar color="my-primary">
+    <mat-toolbar-row><span>Register</span></mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content>
+    <form [formGroup]="registerForm">
+        <div class="from-group">
+            <mat-form-field appearance="outline"> 
+                <mat-label>Username:</mat-label>
+                <input matInput
+                       type="text"
+                       formControlName="username" required>
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+
