@@ -1,3 +1,14 @@
 .mat-my-primary{
     background-image: linear-gradient(to right, var(--orange), #fff);
 }
+mat-label{
+    font-size: 16px;
+    color: var(--orange)
+}
+mat-form-field{
+    width: 100%;
+    padding: 5px;
+}
+.mat-dialog-close{
+    background-image: linear-gradient(var(--light-color), #fff);
+}

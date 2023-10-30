@@ -20,5 +20,9 @@ ngOnInit(): void {
   })
 }
 
+onRegister(){
+  console.log('Form Values: ', this.registerForm.value)
+}
+
 
 }
