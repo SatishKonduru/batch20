@@ -18,7 +18,7 @@
             <mat-form-field appearance="outline"> 
                 <mat-label>Password:</mat-label>
                 <input matInput
-                       type="text"
+                       type="password"
                        formControlName="password" required>
                 <mat-error *ngIf="registerForm.controls.password.touched && registerForm.controls.password.invalid">
                     <span *ngIf="registerForm.controls.password.errors?.required">This field is Mandatory</span>
