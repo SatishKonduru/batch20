@@ -14,6 +14,7 @@ import { NgxUiLoaderModule,NgxUiLoaderConfig,SPINNER,PB_DIRECTION } from 'ngx-ui
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SnackbarService } from './services/snackbar.service';
 
 
 
@@ -48,7 +49,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService, SnackbarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
