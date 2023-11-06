@@ -17,6 +17,12 @@ export class UserService {
     })
   }
 
+  forgotPassword(data: any) : Observable<any>{
+    return this._http.post(this.url+'/user/forgotPassword', data, {
+      headers: new HttpHeaders().set('Content-Type','application/json')
+    })
+  }
+
   
 
 
