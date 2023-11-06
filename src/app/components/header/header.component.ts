@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { SignupComponent } from '../signup/signup.component';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-header',
@@ -19,4 +20,16 @@ userSignup(){
     dialogConfig.autoFocus = true
     this._userDialog.open(SignupComponent, dialogConfig)
   }
+
+  userLogin(){
+    const dialogConfig = new MatDialogConfig()
+    dialogConfig.width = '70rem'
+    dialogConfig.position = { right: '10px', top: '5px'}
+    dialogConfig.disableClose = true
+    dialogConfig.autoFocus = true
+    this._userDialog.open(LoginComponent, dialogConfig)
+  }
+
+
+
 }
