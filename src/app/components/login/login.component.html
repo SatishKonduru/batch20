@@ -31,3 +31,7 @@
         <a mat-flat-button color="link" (click)="forgotPassword()">Forgot Password?</a>
     </div>
 </mat-dialog-content>
+<mat-dialog-actions style="justify-content: center;">
+    <button mat-raised-button color="my-primary" [disabled]=" !(loginForm.valid && loginForm.dirty)" (click)="onLogin()">Login</button>
+    <button mat-raised-button color="dialog-close" mat-dialog-close>Close</button>
+    </mat-dialog-actions>

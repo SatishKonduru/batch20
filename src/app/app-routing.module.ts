@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,23 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignupComponent
+  },
+  {
+    path: 'rsk',
+    component: DashboardComponent,
+    children: [
+      {
+        path:'',
+        redirectTo:'/rsk/dashboard',
+        pathMatch: 'full'
+      },
+      {
+        path: 'dashboard',
+        loadChildren: 
+        () => import('./modules/dashboard/dashboard.module')
+        .then(m => m.DashboardModule)
+      }
+    ]
   },
   {
     path: '**',

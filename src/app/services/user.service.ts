@@ -23,7 +23,14 @@ export class UserService {
     })
   }
 
+  login(data: any): Observable<any>{
+  return this._http.post(this.url+'/user/login', data, {
+    headers: new HttpHeaders().set('Content-Type','application/json')
+    })
+}
   
-
+  checkToken(){
+    return this._http.get(this.url+'/user/checkToken')
+  }
 
 }
