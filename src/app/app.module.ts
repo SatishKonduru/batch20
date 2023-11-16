@@ -17,6 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { SnackbarService } from './services/snackbar.service';
 import { LoginComponent } from './components/login/login.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { DashboardService } from './services/dashboard.service';
+import { AuthService } from './services/auth.service';
 
 
 
@@ -53,7 +55,12 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UserService, SnackbarService],
+  providers: [
+    UserService, 
+    SnackbarService,
+    DashboardService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

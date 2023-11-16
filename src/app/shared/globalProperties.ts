@@ -2,6 +2,8 @@ export class globalProperties{
     //Messages
 public static genericError : string='Something went Wrong! Please try again later.'
 
+public static unauthorized : string = "You are not authorized person to access this page!"
+
 
 //Regular Expression (Regex)
 public static nameRegx : string ='([a-zA-Z0-9]*)'
@@ -12,6 +14,8 @@ public static contactNumberRegex : string ='^[0-9]{10,10}$'
 public static error: string = 'error'
 
 }
+
+
 
 // Symbols Meaning.....
 // . => Any Single CharacterData
