@@ -13,12 +13,14 @@ import { SignupComponent } from './components/signup/signup.component';
 import { NgxUiLoaderModule,NgxUiLoaderConfig,SPINNER,PB_DIRECTION } from 'ngx-ui-loader';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SnackbarService } from './services/snackbar.service';
 import { LoginComponent } from './components/login/login.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { DashboardService } from './services/dashboard.service';
 import { AuthService } from './services/auth.service';
+import { RouteGuardService } from './services/route-guard.service';
+import { TokenInterceptorInterceptor } from './services/token-interceptor.interceptor';
 
 
 
@@ -59,7 +61,13 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     UserService, 
     SnackbarService,
     DashboardService,
-    AuthService
+    AuthService,
+    RouteGuardService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

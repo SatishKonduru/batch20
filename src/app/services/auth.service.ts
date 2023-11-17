@@ -1,4 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
+import { DashboardService } from './dashboard.service';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -6,5 +8,17 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  constructor() { }
+  constructor(private _router: Router) {}
+
+  isAuthenticated(): boolean{
+    const token = localStorage.getItem('token')
+    if(!token){
+      this._router.navigate(['/home'])
+      return false
+    }
+    else{
+      return true
+    }
+  }
+
 }
