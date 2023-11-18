@@ -26,7 +26,7 @@ public auth: any;
     const token = localStorage.getItem('token')
     var tokenPayload : any;
     try{
-      tokenPayload = jwt_decode('token')
+      tokenPayload = jwt_decode(token)
     }
     catch(err){
       localStorage.clear()
