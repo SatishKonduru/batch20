@@ -6,8 +6,8 @@ import { AuthService } from './auth.service';
 import { SnackbarService } from './snackbar.service';
 import { globalProperties } from '../shared/globalProperties';
 
-
-const jwt_decode = require('jwt-decode');
+import { jwtDecode } from "jwt-decode";
+// const jwt_decode = require('jwt-decode');
 
 @Injectable({
   providedIn: 'root'
@@ -24,9 +24,13 @@ public auth: any;
   canActivate(route: ActivatedRouteSnapshot): boolean{
     let expectedRoleArray = route.data.expectedRole
     const token = localStorage.getItem('token')
+    console.log('Token in Gaurd: ', token)
+
     var tokenPayload : any;
     try{
-      tokenPayload = jwt_decode(token)
+      // tokenPayload = jwt_decode(token)
+      tokenPayload = jwtDecode(token)
+      console.log('Token Payload: ', tokenPayload.role)
     }
     catch(err){
       localStorage.clear()
