@@ -16,13 +16,15 @@ export class TokenInterceptorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler):Observable<HttpEvent<any>>{
     const token = localStorage.getItem('token')
+    console.log("Token from localstorage in Interceptor: ", token)
     if(token){
       request = request.clone({
         setHeaders: {
-          autherization: `Bearer ${token}`
+          'autherization': `Bearer ${token}`
         }
       })
     }
+    console.log("Token in Interceptor: ", request)
     return next.handle(request).pipe(catchError((err ) => {
       if(err instanceof HttpErrorResponse){
         console.log(err.url)
