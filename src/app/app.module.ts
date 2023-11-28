@@ -21,6 +21,8 @@ import { DashboardService } from './services/dashboard.service';
 import { AuthService } from './services/auth.service';
 import { RouteGuardService } from './services/route-guard.service';
 import { TokenInterceptorInterceptor } from './services/token-interceptor.interceptor';
+import { MenuItems } from './shared/menu-items';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 
 
@@ -45,7 +47,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     PageNotFoundComponent,
     SignupComponent,
     LoginComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorInterceptor,
       multi: true
-    }
+    },
+    MenuItems
   ],
   bootstrap: [AppComponent]
 })

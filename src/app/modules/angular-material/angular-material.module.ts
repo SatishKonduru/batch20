@@ -8,6 +8,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material/list';
 
 
 
@@ -20,7 +22,9 @@ const materialComponents = [
   MatInputModule,
   MatFormFieldModule,
   MatButtonModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatCardModule,
+  MatListModule
 ]
 @NgModule({
  imports: [materialComponents],

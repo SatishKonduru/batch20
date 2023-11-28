@@ -1,4 +1,4 @@
-import { DialogConfig } from '@angular/cdk/dialog';
+import { Dialog, DialogConfig } from '@angular/cdk/dialog';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
@@ -8,6 +8,7 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 import { UserService } from 'src/app/services/user.service';
 import { globalProperties } from 'src/app/shared/globalProperties';
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
+import { ChangePasswordComponent } from '../change-password/change-password.component';
 
 @Component({
   selector: 'app-login',
@@ -68,6 +69,13 @@ constructor(private _formBuilder: FormBuilder,
     })
   }
 
-
+  changePassword(){
+    this._dialogRef.close()
+    const dialogConfig = new MatDialogConfig()
+    dialogConfig.width = '70rem',
+    dialogConfig.position = {right: '10px', top: '5px'}
+    dialogConfig.disableClose = true
+    this._userDialog.open(ChangePasswordComponent, dialogConfig)
+  }
 
 }

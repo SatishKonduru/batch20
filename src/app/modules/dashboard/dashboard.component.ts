@@ -25,7 +25,8 @@ export class DashboardComponent {
     this._dashboardService.getDetails()
     .subscribe((res: any) => {
       this._ngxService.stop()
-      this.data = res
+      this.data = res 
+      console.log("Dashboard Data: ", this.data)
     }, (err) => {
       this._ngxService.stop()
       console.log("Error while getiting Dashboard Data: ", err)
