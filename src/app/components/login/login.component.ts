@@ -78,4 +78,14 @@ constructor(private _formBuilder: FormBuilder,
     this._userDialog.open(ChangePasswordComponent, dialogConfig)
   }
 
+  check(){
+    const token = localStorage.getItem('token')
+    if(token){
+      return true
+    }
+    else{
+      return false
+    }
+  }
+
 }

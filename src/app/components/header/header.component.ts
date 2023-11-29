@@ -47,6 +47,13 @@ userSignup(){
     this._userDialog.open(LoginComponent, dialogConfig)
   }
 
-
+check(){
+  if(localStorage.getItem('token')){
+    return true
+  }
+  else{
+    return false
+  }
+}
 
 }

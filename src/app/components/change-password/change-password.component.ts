@@ -19,7 +19,7 @@ export class ChangePasswordComponent implements OnInit{
     private _formBuilder:  FormBuilder,
     private _userService: UserService,
     private _dialogRef: MatDialogRef<ChangePasswordComponent>,
-    private _ngxLoader:  NgxUiLoaderService,
+    private _ngxService:  NgxUiLoaderService,
     private _snackbar: SnackbarService
   ){}
 
@@ -32,8 +32,42 @@ ngOnInit(): void {
   })
 }
 
+changePassword(){
+  this._ngxService.start()
+  var formData = this.changePasswordForm.value
+  var data = {
+    email: formData.email,
+    oldPassword: formData.oldPassword,
+    newPassword: formData.newPassword,
+    confirmPassword: formData.confirmPassword
+  }
 
+  this._userService.changePassword(data)
+  .subscribe( (res: any) => {
+    this._ngxService.stop()
+    this.responseMsg = res?.message
+    this._dialogRef.close()
+    this._snackbar.openSnackbar(this.responseMsg,'Success')
+  }, (err: any)=>{
+    this._ngxService.stop()
+    if(err?.error.message){
+      this.responseMsg =  err?.error.message
+    }
+    else{
+      this.responseMsg = globalProperties.genericError
+    }
+    this._snackbar.openSnackbar(this.responseMsg, globalProperties.error)
+  })
+}
 
+validatePassword(){
+  if(this.changePasswordForm.controls['newPassword'].value != this.changePasswordForm.controls['confirmPassword'].value){
+    return true
+  }
+  else{
+    return false
+  }
+}
 
 
 
