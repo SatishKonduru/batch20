@@ -4,6 +4,7 @@ import { SignupComponent } from '../signup/signup.component';
 import { LoginComponent } from '../login/login.component';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { LogoutComponent } from '../logout/logout.component';
 
 @Component({
   selector: 'app-header',
@@ -55,5 +56,23 @@ check(){
     return false
   }
 }
+
+logout(){
+  const dialogConfig = new MatDialogConfig()
+  dialogConfig.width = '50rem'
+  dialogConfig.disableClose = true
+  dialogConfig.autoFocus = true
+  let dialogRef = this._userDialog.open(LogoutComponent, dialogConfig)
+
+  dialogRef.afterClosed()
+  .subscribe(res => {
+    if(res === 'true'){
+      localStorage.clear()
+      this._router.navigate(['/home'])
+    }
+    else{}
+  })
+}
+
 
 }

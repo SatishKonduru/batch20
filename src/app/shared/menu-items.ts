@@ -13,7 +13,13 @@ const MENU_ITEMS = [
       name: "Dashboard",
       icon: 'dashboard',
       role:''  
-    }
+    },
+    {
+        state: 'category',
+        name: "Category",
+        icon: 'category',
+        role:'admin'  
+      }
 ]
 
 

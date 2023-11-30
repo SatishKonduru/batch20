@@ -23,6 +23,9 @@ import { RouteGuardService } from './services/route-guard.service';
 import { TokenInterceptorInterceptor } from './services/token-interceptor.interceptor';
 import { MenuItems } from './shared/menu-items';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { CategoryService } from './services/category.service';
+import { ManageCategoryComponent } from './components/manage-category/manage-category.component';
 
 
 
@@ -48,7 +51,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     SignupComponent,
     LoginComponent,
     ForgotPasswordComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    LogoutComponent,
+    ManageCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +76,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
       useClass: TokenInterceptorInterceptor,
       multi: true
     },
-    MenuItems
+    MenuItems,
+    CategoryService
   ],
   bootstrap: [AppComponent]
 })
