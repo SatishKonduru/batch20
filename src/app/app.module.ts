@@ -26,6 +26,7 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { LogoutComponent } from './components/logout/logout.component';
 import { CategoryService } from './services/category.service';
 import { ManageCategoryComponent } from './components/manage-category/manage-category.component';
+import { CategoryComponent } from './components/category/category.component';
 
 
 
@@ -53,7 +54,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ForgotPasswordComponent,
     ChangePasswordComponent,
     LogoutComponent,
-    ManageCategoryComponent
+    ManageCategoryComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

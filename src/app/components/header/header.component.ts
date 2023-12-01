@@ -59,7 +59,7 @@ check(){
 
 logout(){
   const dialogConfig = new MatDialogConfig()
-  dialogConfig.width = '50rem'
+  dialogConfig.width = '20rem'
   dialogConfig.disableClose = true
   dialogConfig.autoFocus = true
   let dialogRef = this._userDialog.open(LogoutComponent, dialogConfig)
