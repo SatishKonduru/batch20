@@ -23,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'rsk',
-    component: DashboardComponent,
+    
     children: [
       {
         path:'',

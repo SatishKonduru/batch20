@@ -1,11 +1,10 @@
 <mat-drawer-container class="rsk-container" autosize >
     <mat-drawer class="rsk-sidenav" #drawer mode="side" opened >
        <mat-nav-list *ngFor="let item of menuItems.getMenuItems()">
-            <mat-list-item [routerLink]="['/rsk/', item.state]" 
+          <mat-list-item [routerLink]="['/rsk/'+item.state]" 
                             routerLinkActive="selected"
                             group={{item.state}}
-                            clas="listItem"
-                            *ngIf="(item.role === '' || item.role === tokenPayload.role)">
+                            clas="listItem"      >
                 <mat-icon style="color:#fff">{{item.icon}}</mat-icon>
                 <span style="color: #fff">{{"  "+item.name}}</span>
             </mat-list-item>
@@ -13,9 +12,8 @@
     </mat-drawer>
     <mat-drawer-content>
         <div class="rsk-sidenav-content">
-            <mat-icon mat-icon-button (click)="drawer.toggle()" style="font-size: 18px; height: 20px; width: 50px; color: #000; top: 170px ; cursor: pointer;">menu</mat-icon>
-        
-            <div class="pageContent">
+            <mat-icon mat-button style="font-size: 18px; height: 20px; width: 50px; color: #000; top: 170px ; cursor: pointer;" (click)="drawer.toggle()" >menu</mat-icon>
+           <div class="pageContent">
                 <router-outlet></router-outlet>
             </div>
         </div>
