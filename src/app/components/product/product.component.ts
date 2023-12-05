@@ -37,6 +37,7 @@ ngOnInit(): void {
   if(this.dialogData.action == 'Edit'){
     this.dialogAction = 'Edit'
     this.action = 'Update'
+    console.log("Product Data: ", this.dialogData.data)
     this.productForm.patchValue(this.dialogData.data)
   }
   this.getCategories()

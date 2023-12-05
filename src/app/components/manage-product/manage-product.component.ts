@@ -77,7 +77,8 @@ editProduct(item: any){
   }
   dialogConfig.width = '300px'
   dialogConfig.disableClose = true
-  dialogConfig.position = {top: '100px', left: '48rem'}
+  dialogConfig.position = {top: '80px', left: '48rem'}
+  console.log("product Data in manage-category: ", dialogConfig)
   const dialogRef = this._userDialog.open(ProductComponent, dialogConfig)
   this._router.events.subscribe(()=>{
     dialogRef.close()
