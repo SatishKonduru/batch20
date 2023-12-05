@@ -27,6 +27,10 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { CategoryService } from './services/category.service';
 import { ManageCategoryComponent } from './components/manage-category/manage-category.component';
 import { CategoryComponent } from './components/category/category.component';
+import { ProductService } from './services/product.service';
+import { ManageProductComponent } from './components/manage-product/manage-product.component';
+import { ProductComponent } from './components/product/product.component';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 
 
 
@@ -55,7 +59,10 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ChangePasswordComponent,
     LogoutComponent,
     ManageCategoryComponent,
-    CategoryComponent
+    CategoryComponent,
+    ManageProductComponent,
+    ProductComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +86,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
       multi: true
     },
     MenuItems,
-    CategoryService
+    CategoryService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })

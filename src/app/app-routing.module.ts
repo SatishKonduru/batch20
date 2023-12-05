@@ -6,6 +6,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { RouteGuardService } from './services/route-guard.service';
 import { ManageCategoryComponent } from './components/manage-category/manage-category.component';
+import { ManageProductComponent } from './components/manage-product/manage-product.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,14 @@ const routes: Routes = [
       {
         path: 'category',
         component: ManageCategoryComponent,
+        canActivate: [RouteGuardService],
+        data: {
+          expectedRole: ['admin']
+        }
+      },
+      {
+        path: 'product',
+        component: ManageProductComponent,
         canActivate: [RouteGuardService],
         data: {
           expectedRole: ['admin']

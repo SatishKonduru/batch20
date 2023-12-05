@@ -1,0 +1,6 @@
+.mat-my-primary{
+    background: var(--orange) !important;
+  }
+th{
+    color: var(--orange)
+}

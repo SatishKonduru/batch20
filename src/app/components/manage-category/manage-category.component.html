@@ -7,7 +7,7 @@
                             [(ngModel)]="searchKey"
                             (keyup)="applyFilter($event.target.value)">
             <button matSuffix mat-icon-button *ngIf="searchKey" (click)="onSearchClear()"><mat-icon>close</mat-icon></button>
-        </mat-form-field>
+        </mat-form-field> 
     </mat-card-content>
 </mat-card>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin-top: 15px;">

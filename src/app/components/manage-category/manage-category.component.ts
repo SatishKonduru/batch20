@@ -69,10 +69,11 @@ addCategory(){
   })
 }
 
-applyFilter(data: any){
 
+onSearchClear(){
+this.searchKey = ''
+this.applyFilter('')  
 }
-onSearchClear(){}
 editCategory(item: any){
   const dialogConfig = new MatDialogConfig()
   dialogConfig.data = {
@@ -94,5 +95,12 @@ editCategory(item: any){
   })
 
 }
+
+applyFilter(filterValue: string){
+this.dataSource.filter = filterValue.trim().toLowerCase()
+}
+
+
+
 
 }
