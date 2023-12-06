@@ -4,6 +4,9 @@ public static genericError : string='Something went Wrong! Please try again late
 
 public static unauthorized : string = "You are not authorized person to access this page!"
 
+public static productExistError: string = 'Product already Exist'
+
+public static productAdded: string = 'Product Added Successfully'
 
 //Regular Expression (Regex)
 public static nameRegx : string ='([a-zA-Z0-9]*)'

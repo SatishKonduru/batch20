@@ -40,6 +40,18 @@ return this._http.delete(this.URL+'/product/delete/'+id, {
 }
 
 
+getProductByCategory(id: any){
+return  this._http.get(this.URL+'/product/getByCategory/'+id, {
+    headers: new HttpHeaders().set('Content-Type','application/json')
+  })
+}
+
+
+getById(id: any){
+return this._http.get(this.URL+'/product/getById/'+id,{
+  headers: new HttpHeaders().set('Content-Type','application/json')
+})
+}
 
 
 

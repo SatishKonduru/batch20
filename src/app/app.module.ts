@@ -31,6 +31,8 @@ import { ProductService } from './services/product.service';
 import { ManageProductComponent } from './components/manage-product/manage-product.component';
 import { ProductComponent } from './components/product/product.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { BillService } from './services/bill.service';
+import { ManageOrderComponent } from './components/manage-order/manage-order.component';
 
 
 
@@ -62,7 +64,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     CategoryComponent,
     ManageProductComponent,
     ProductComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    ManageOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +90,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     },
     MenuItems,
     CategoryService,
-    ProductService
+    ProductService,
+    BillService
   ],
   bootstrap: [AppComponent]
 })
