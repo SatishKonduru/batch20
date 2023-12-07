@@ -25,7 +25,7 @@ return this._http.patch(this.url+'/category/update', data,{
 
 
 getCategories(){
-  console.log(this._http.get(this.url+'/category/get'))
+  // console.log(this._http.get(this.url+'/category/get'))
   return this._http.get(this.url+'/category/get')
 }
 

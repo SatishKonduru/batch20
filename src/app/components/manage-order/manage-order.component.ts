@@ -39,10 +39,10 @@ constructor(
 
 ngOnInit(): void {
   this._ngxService.start()
-  this.getCategories()
+ 
   this.manageOrderForm = this._formBuilder.group({
     name: [null,[Validators.required]],
-    email: [null,, [Validators.required, Validators.pattern(globalProperties.emailRegx)]],
+    email: [null, [Validators.required, Validators.pattern(globalProperties.emailRegx)]],
     contactNumber: [null, [Validators.required, Validators.pattern(globalProperties.contactNumberRegex)]],
     paymentMethod: [null, [Validators.required]],
     product: [null, [Validators.required]],
@@ -51,7 +51,10 @@ ngOnInit(): void {
     price: [null, [Validators.required]],
     total: [0, [Validators.required]]
   })
+
+  this.getCategories()
 }
+
 getCategories(){
 this._categoryService.getCategories()
 .subscribe((res: any) => {
@@ -70,11 +73,11 @@ this._categoryService.getCategories()
 }
 
 
-getProductByCategory(item: any){
+getProductsByCategory(item: any){
   this._productService.getProductByCategory(item.id)
   .subscribe((res: any) => {
     this.products = res
-    this.manageOrderForm.contols['price'].setValue('')
+    this.manageOrderForm.controls['price'].setValue('')
     this.manageOrderForm.controls['quantity'].setValue('')
     this.manageOrderForm.controls['total'].setValue(0)
   }, (err: any) => {
@@ -125,14 +128,119 @@ setQuantity(value: any){
       this.manageOrderForm.controls['quantity'].value * this.manageOrderForm.controls['price'].value
     )
   }
+  // else{
+  //   this.manageOrderForm.controls['quantity'].setValue(1)
+  //   this.manageOrderForm.controls['total'].setValue(
+  //     this.manageOrderForm.controls['quantity'].value * this.manageOrderForm.controls['price'].value
+  //   )
+  // }
+}
+validateSubmit(){
+if(this.totalAmount === 0 ||
+  this.manageOrderForm.controls['name'].value === null || 
+  this.manageOrderForm.controls['email'].value === null || 
+  this.manageOrderForm.controls['contactNumber'].value === null ||
+  this.manageOrderForm.controls['paymentMethod'].value === null || 
+  !(this.manageOrderForm.controls['contactNumber'].valid) || 
+  !(this.manageOrderForm.controls['email'].valid) 
+  ){
+    return true
+  }
   else{
-    this.manageOrderForm.controls['quantity'].setValue(1)
-    this.manageOrderForm.controls['total'].setValue(
-      this.manageOrderForm.controls['quantity'].value * this.manageOrderForm.controls['price'].value
-    )
+    return false
   }
 }
+submitAction(){
+  this._ngxService.start()
+  var formData = this.manageOrderForm.value
+  var data = {
+    name: formData.name,
+    email: formData.email,
+    contactNumber: formData.contactNumber,
+    paymentMethod: formData.paymentMethod,
+    totalAmount: this.totalAmount,
+    productDetails: JSON.stringify(this.dataSource)
+  }
+  
+  this._billService.generateReport(data)
+  .subscribe((res: any) => {
+  
+      this.downloaFile(res?.uuid)
+      this.manageOrderForm.reset()
+      this.dataSource = []
+      this.totalAmount = 0
 
+  }, (err: any) => {
+    this._ngxService.stop()
+    if(err.error?.message){
+      this.responseMsg = err.error?.message
+    }
+    else{
+      this.responseMsg = globalProperties.genericError
+    }
+    this._snackbar.openSnackbar(this.responseMsg, globalProperties.error)
+  })
+}
+
+downloaFile(fileName: any){
+  var data = {
+    uuid: fileName
+  }
+  this._billService.getPdf(data)
+  .subscribe((res: any) => {
+      saveAs(res, fileName+'.pdf')
+      this._ngxService.stop()
+  })
+
+
+
+}
+
+handleDeleteAction(value: any, element: any){
+  this.totalAmount = this.totalAmount - element.total
+  this.dataSource.splice(value, 1)
+  this.dataSource = [...this.dataSource]
+  this.length = this.dataSource.length
+  this.dataSource.paginator = this.paginator
+
+}
+
+validateProductAddButton(){
+if(this.manageOrderForm.controls['total'].value === 0 || this.manageOrderForm.controls['total'].value === null  || this.manageOrderForm.controls['quantity'].value <= 0){
+    return true
+}
+else{
+  return false
+}
+}
+
+add(){
+  var formData = this.manageOrderForm.value
+  var productName = this.dataSource.find((e:{id: number}) => e.id == formData.product.id)
+  
+  if(productName === undefined){
+    this.totalAmount = this.totalAmount + formData.total
+    this.dataSource.push({
+      id: formData.product.id,
+      name: formData.product.name,
+      category: formData.category.name,
+      quantity: formData.quantity,
+      price:  formData.price,
+      total: formData.total
+    })
+
+    this.dataSource = [...this.dataSource]
+    this.length = this.dataSource.length;
+    this.dataSource.paginator = this.paginator
+    this._snackbar.openSnackbar(globalProperties.productAdded,'Success')
+  }
+  else{
+    this._snackbar.openSnackbar(globalProperties.productExistError,globalProperties.error)
+  }
+
+
+
+}
 
 
 
