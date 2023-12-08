@@ -31,6 +31,18 @@ const MENU_ITEMS = [
     name: 'Manage Order',
     icon: 'list_alt',
     role: ''
+  },
+  {
+    state: 'bill',
+    name: 'View Bill',
+    icon: 'import_contacts',
+    role: ''
+  },
+  {
+    state: 'user',
+    name: 'Manage User',
+    icon: 'people',
+    role: 'admin'
   }
 ]
 

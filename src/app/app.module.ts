@@ -33,6 +33,9 @@ import { ProductComponent } from './components/product/product.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { BillService } from './services/bill.service';
 import { ManageOrderComponent } from './components/manage-order/manage-order.component';
+import { ViewBillComponent } from './components/view-bill/view-bill.component';
+import { ViewBillProductsComponent } from './components/view-bill-products/view-bill-products.component';
+import { ManageUserComponent } from './components/manage-user/manage-user.component';
 
 
 
@@ -65,7 +68,10 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ManageProductComponent,
     ProductComponent,
     ConfirmationComponent,
-    ManageOrderComponent
+    ManageOrderComponent,
+    ViewBillComponent,
+    ViewBillProductsComponent,
+    ManageUserComponent
   ],
   imports: [
     BrowserModule,

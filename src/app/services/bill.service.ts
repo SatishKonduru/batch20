@@ -21,13 +21,17 @@ getPdf(data: any): Observable<Blob>{
 return this._http.post(this.URL+'/bill/getPdf', data, {
   responseType: 'blob'
 })
-
-
-
-
 }
 
+getBills(){
+  return this._http.get(this.URL+'/bill/getBills');
+}
 
+delete(id: any){
+  return this._http.delete(this.URL+'/bill/delete/'+id, {
+    headers: new HttpHeaders().set('Content-Type','application/json')
+  })
+}
 
 
 
